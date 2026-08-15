@@ -3,10 +3,10 @@
 on:
   push:
     branches: [ "main" ]
-    tags:
-      - 'v*'
   pull_request:
     branches: [ "main" ]
+  release:
+    types: [ published ]
   workflow_dispatch:
 
 permissions:
@@ -14,7 +14,7 @@ permissions:
 
 jobs:
   build:
-    name: Build & Package (Windows x64)
+    name: Build, Package & Create Installer (Windows x64)
     runs-on: windows-latest
 
     steps:
@@ -42,27 +42,40 @@ jobs:
         -p:PublishReadyToRun=true
         -o ./publish
 
-    - name: Package Standalone ZIP
+    - name: Package Standalone Portable ZIP
       shell: pwsh
       run: |
-        $tag = if ("${{ github.ref_name }}".StartsWith("v")) { "${{ github.ref_name }}" } else { "latest" }
-        $zipName = "TicTacFusion-$tag-Standalone-win-x64.zip"
+        $version = if ("${{ github.event.release.tag_name }}") { "${{ github.event.release.tag_name }}" } else { "v1.0.0" }
         New-Item -ItemType Directory -Force -Path ./dist | Out-Null
-        Compress-Archive -Path ./publish/* -DestinationPath "./dist/$zipName" -Force
-        Write-Host "Created archive: $zipName"
+        Compress-Archive -Path ./publish/* -DestinationPath "./dist/TicTacFusion-$version-Portable-win-x64.zip" -Force
+        Write-Host "Created portable package: TicTacFusion-$version-Portable-win-x64.zip"
+
+    - name: Install Inno Setup Compiler
+      run: choco install innosetup --no-progress -y
+
+    - name: Compile Windows Setup Installer (.exe)
+      shell: pwsh
+      run: |
+        New-Item -ItemType Directory -Force -Path ./installer-output | Out-Null
+        & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" installer.iss
+        Write-Host "Windows Setup installer successfully created in ./installer-output/"
 
     - name: Upload Build Artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: TicTacFusion-Build
-        path: ./dist/*.zip
+        name: TicTacFusion-Packages
+        path: |
+          ./dist/*.zip
+          ./installer-output/*.exe
         retention-days: 14
 
-    - name: Publish GitHub Release Asset (on tag)
-      if: startsWith(github.ref, 'refs/tags/v')
+    - name: Attach Assets to GitHub Release
+      if: github.event_name == 'release'
       uses: softprops/action-gh-release@v2
       with:
-        files: ./dist/*.zip
+        files: |
+          ./dist/*.zip
+          ./installer-output/*.exe
         draft: false
         prerelease: false
         generate_release_notes: true
