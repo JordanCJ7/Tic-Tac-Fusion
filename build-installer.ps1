@@ -18,8 +18,8 @@ if (!(Test-Path -Path "./dist")) {
     New-Item -ItemType Directory -Path "./dist" | Out-Null
 }
 
-Compress-Archive -Path ./publish/* -DestinationPath ./dist/TicTacFusion-v2.0-Standalone-win-x64.zip -Force
-Write-Host "Portable package created at: ./dist/TicTacFusion-v2.0-Standalone-win-x64.zip" -ForegroundColor Green
+Compress-Archive -Path ./publish/* -DestinationPath ./dist/TicTacFusion-v1.0.0-Standalone-win-x64.zip -Force
+Write-Host "Portable package created at: ./dist/TicTacFusion-v1.0.0-Standalone-win-x64.zip" -ForegroundColor Green
 
 # Step 3: Check for Inno Setup compiler to create setup installer
 Write-Host "`n[3/3] Checking for Inno Setup compiler (ISCC.exe)..." -ForegroundColor Yellow
@@ -42,3 +42,4 @@ if ($isccPath -and (Test-Path $isccPath)) {
 Write-Host "`n=============================================" -ForegroundColor Green
 Write-Host "  Build & Packaging Complete!                " -ForegroundColor Green
 Write-Host "=============================================" -ForegroundColor Green
+

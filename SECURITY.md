@@ -6,8 +6,8 @@ We actively release security and stability patches for the following versions of
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 2.0.x   | :white_check_mark: |
-| < 2.0   | :x:                |
+| 1.0.x   | :white_check_mark: |
+| < 1.0   | :x:                |
 
 ---
 
@@ -33,5 +33,6 @@ If you discover a security vulnerability (e.g., in binary packaging, installer p
 
 1. **Acknowledgment:** You will receive an initial response within **48 hours** acknowledging receipt of your report.
 2. **Investigation & Patch:** We will investigate and develop a security patch in a private branch.
-3. **Release & Advisory:** A patch release (e.g., `v2.0.1`) and corresponding GitHub Security Advisory will be published once the fix is verified.
+3. **Release & Advisory:** A patch release (e.g., `v1.0.1`) and corresponding GitHub Security Advisory will be published once the fix is verified.
+
 
