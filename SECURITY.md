@@ -19,7 +19,7 @@ If you discover a security vulnerability (e.g., in binary packaging, installer p
 
 1. **Do not create a public GitHub issue.**
 2. Use **[GitHub Private Vulnerability Reporting](https://github.com/JordanCJ7/Tic-Tac-Fusion/security/advisories/new)** to submit your report directly to the repository maintainers.
-3. Alternatively, contact the maintainer directly via email at **janithgamage.dev@gmail.com** with the subject `[SECURITY] Tic Tac Fusion Vulnerability Report`.
+3. Alternatively, contact the maintainer directly via email at **janithagamage2001@gmail.com** with the subject `[SECURITY] Tic Tac Fusion Vulnerability Report`.
 
 ### What to Include in Your Report:
 - Type of issue (e.g., arbitrary code execution, installer DLL hijacking, unsafe serialization).
@@ -34,3 +34,4 @@ If you discover a security vulnerability (e.g., in binary packaging, installer p
 1. **Acknowledgment:** You will receive an initial response within **48 hours** acknowledging receipt of your report.
 2. **Investigation & Patch:** We will investigate and develop a security patch in a private branch.
 3. **Release & Advisory:** A patch release (e.g., `v2.0.1`) and corresponding GitHub Security Advisory will be published once the fix is verified.
+
