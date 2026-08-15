@@ -1,0 +1,64 @@
+﻿## =====================================
+## Build & Compilation Outputs
+## =====================================
+[Bb]in/
+[Oo]bj/
+**/[Bb]in/
+**/[Oo]bj/
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Ll]og/
+[Ll]ogs/
+
+## =====================================
+## Distribution & Package Artifacts
+## =====================================
+dist/
+publish/
+installer-output/
+*.zip
+*.tar.gz
+*.7z
+*.rar
+*.msi
+*.msix
+*.appx
+
+## =====================================
+## Compiled Binaries & Intermediate Files
+## =====================================
+*.exe
+*.dll
+*.pdb
+*.baml
+*.resources
+*.deps.json
+*.runtimeconfig.json
+*.cache
+*.FileListAbsolute.txt
+*.sourcelink.json
+
+## =====================================
+## Visual Studio & IDE Cache
+## =====================================
+.vs/
+*.user
+*.userosscache
+*.sln.docstates
+*.suo
+.idea/
+
+## =====================================
+## .NET Tools & NuGet
+## =====================================
+.dotnet/
+*.publishproj
+*.nuget.props
+*.nuget.targets

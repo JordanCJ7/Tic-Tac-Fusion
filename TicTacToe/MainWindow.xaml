@@ -1,67 +1,319 @@
 <Window x:Class="TicTacToe.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Tic Tac Toe" Height="450" Width="400">
-    <Grid>
-        <!-- First Screen: Game Mode Selection -->
-        <Grid x:Name="GameModeScreen" Visibility="Visible" Background="White">
-            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                <TextBlock Text="Game Mode" FontSize="24" Margin="0,0,0,20" TextAlignment="Center" Foreground="Black"/>
-                <Button Content="Player vs Player" Width="200" Height="40" Margin="0,5" Click="PlayerVsPlayer_Click" Background="LightBlue"/>
-                <Button Content="Player vs AI" Width="200" Height="40" Margin="0,5" Click="PlayerVsAI_Click" Background="LightBlue"/>
-                
-                <TextBlock x:Name="AIDifficultyText" Text="Select AI Difficulty" FontSize="20" Margin="0,20,0,10" TextAlignment="Center" Foreground="Black" Visibility="Collapsed"/>
-                <StackPanel x:Name="AIDifficultyPanel" Visibility="Collapsed">
-                    <Button Content="Easy" Width="200" Height="40" Margin="0,5" Click="AIEasy_Click" Background="LightGreen"/>
-                    <Button Content="Medium" Width="200" Height="40" Margin="0,5" Click="AIMedium_Click" Background="LightYellow"/>
-                    <Button Content="Hard" Width="200" Height="40" Margin="0,5" Click="AIHard_Click" Background="LightSalmon"/>
-                </StackPanel>
-            </StackPanel>
-        </Grid>
-          <!-- Second Screen: Board Size Selection -->
-        <Grid x:Name="BoardSizeScreen" Visibility="Collapsed" Background="White">
-            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                <TextBlock Text="Select Board Size" FontSize="24" Margin="0,0,0,20" TextAlignment="Center" Foreground="Black"/>
-                <Button Content="3×3 Classic" Width="200" Height="40" Margin="0,5" Click="Board3x3_Click" Background="LightBlue"/>
-                <Button Content="4×4 Extended" Width="200" Height="40" Margin="0,5" Click="Board4x4_Click" Background="LightBlue"/>
-                <Button Content="5×5 Advanced" Width="200" Height="40" Margin="0,5" Click="Board5x5_Click" Background="LightBlue"/>
-                <Button Content="6×6 Expert" Width="200" Height="40" Margin="0,5" Click="Board6x6_Click" Background="LightBlue"/>
-                <Button Content="Back" Width="200" Height="40" Margin="0,20,0,5" Click="BackToGameMode_Click" Background="LightGray"/>
-            </StackPanel>
-        </Grid>
-          <!-- Third Screen: Game Mode Type Selection -->
-        <Grid x:Name="GameModeSelectionScreen" Visibility="Collapsed" Background="White">
-            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                <TextBlock Text="Select Game Mode" FontSize="24" Margin="0,0,0,20" TextAlignment="Center" Foreground="Black"/>
-                <Button Content="Classic Mode" Width="200" Height="40" Margin="0,5" Click="ClassicMode_Click" Background="LightBlue"/>
-                <Button Content="Timed Mode (5s per move)" Width="200" Height="40" Margin="0,5" Click="TimedMode_Click" Background="LightGreen"/>
-                <TextBlock Text="In Timed Mode, players have 5 seconds per move. If time runs out, turn is skipped. In case of a draw, the player with the least total time wins." 
-                           TextWrapping="Wrap" Width="280" Margin="0,10,0,10" TextAlignment="Center" FontSize="12"/>
-                <Button Content="Back" Width="200" Height="40" Margin="0,10,0,5" Click="BackToBoardSize_Click" Background="LightGray"/>
-            </StackPanel>
-        </Grid>
-        
-        <!-- Game Screen -->
-        <Grid x:Name="GameScreen" Visibility="Collapsed">
+        Title="TIC TAC TOE ULTIMATE" 
+        Height="720" Width="580"
+        MinHeight="650" MinWidth="520"
+        WindowStartupLocation="CenterScreen"
+        Background="#0A0F1E"
+        Foreground="#F8FAFC"
+        FontFamily="Segoe UI, Inter, Arial"
+        Loaded="Window_Loaded"
+        SizeChanged="Window_SizeChanged">
+
+    <Grid x:Name="RootGrid">
+        <!-- Dynamic Gradient Background -->
+        <Grid.Background>
+            <LinearGradientBrush x:Name="WindowBackgroundBrush" StartPoint="0,0" EndPoint="1,1">
+                <GradientStop x:Name="BgStop1" Color="#0B0F19" Offset="0"/>
+                <GradientStop x:Name="BgStop2" Color="#1E1B4B" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <!-- Ambient Particle Canvas -->
+        <Canvas x:Name="AmbientParticleCanvas" IsHitTestVisible="False"/>
+
+        <Grid Margin="24">
             <Grid.RowDefinitions>
+                <!-- Header / App Bar -->
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
+                <!-- Main Content Area -->
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            
-            <TextBlock x:Name="GameInfo" Text="Player X's Turn" FontSize="20" Margin="10,10,10,0" TextAlignment="Center" Grid.Row="0"/>
-            
-            <TextBlock x:Name="TimerInfo" Text="" FontSize="16" Margin="10,0,10,10" TextAlignment="Center" Grid.Row="1" Visibility="Collapsed"/>
-            
-            <UniformGrid Grid.Row="2" x:Name="GameGrid" Margin="10">
-                <!-- Buttons for the game will be added in code-behind -->
-            </UniformGrid>
-            
-            <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-                <Button Content="New Game" Width="100" Margin="5" Click="NewGame_Click"/>
-                <Button Content="Main Menu" Width="100" Margin="5" Click="MainMenu_Click"/>
-            </StackPanel>
+
+            <!-- Header Controls -->
+            <Grid Grid.Row="0" Margin="0,0,0,16">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <Border Width="32" Height="32" CornerRadius="8" Margin="0,0,10,0">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#00F0FF" Offset="0"/>
+                                <GradientStop Color="#FF007F" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <TextBlock Text="⚔️" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <StackPanel>
+                        <TextBlock Text="TIC TAC TOE" FontSize="18" FontWeight="Black">
+                            <TextBlock.Foreground>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop x:Name="TitleGrad1" Color="#00F0FF" Offset="0"/>
+                                    <GradientStop x:Name="TitleGrad2" Color="#FF007F" Offset="1"/>
+                                </LinearGradientBrush>
+                            </TextBlock.Foreground>
+                        </TextBlock>
+                        <TextBlock Text="NEXT-GEN PC EDITION" FontSize="9" FontWeight="Bold" Foreground="#64748B"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <!-- Top Right Icon Actions -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button x:Name="BtnStats" Style="{StaticResource IconButton}" Content="🏆" ToolTip="Player Stats &amp; Records" Click="BtnStats_Click" Margin="0,0,8,0"/>
+                    <Button x:Name="BtnTheme" Style="{StaticResource IconButton}" Content="🎨" ToolTip="Switch Theme Style" Click="BtnTheme_Click" Margin="0,0,8,0"/>
+                    <Button x:Name="BtnSound" Style="{StaticResource IconButton}" Content="🔊" ToolTip="Toggle Sound Effects" Click="BtnSound_Click"/>
+                </StackPanel>
+            </Grid>
+
+            <!-- ================= SCREEN 1: MODERN LOBBY / SETUP ================= -->
+            <Grid Grid.Row="1" x:Name="LobbyScreen" Visibility="Visible">
+                <Border x:Name="LobbyCard" Background="#B40F172A" BorderBrush="#7838BDF8" BorderThickness="1.5" CornerRadius="20" Padding="24">
+                    <Border.Effect>
+                        <DropShadowEffect Color="#0284C7" BlurRadius="25" ShadowDepth="0" Opacity="0.25"/>
+                    </Border.Effect>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Stretch" MaxWidth="440">
+                            
+                            <TextBlock Text="CHOOSE YOUR MATCH" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,16" Foreground="#F8FAFC"/>
+
+                            <!-- Mode Selection Cards (PVP vs AI) -->
+                            <Grid Margin="0,0,0,16">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="12"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Border x:Name="CardPVP" Grid.Column="0" Background="#1E293B" BorderBrush="#00F0FF" BorderThickness="2" CornerRadius="14" Padding="12" Cursor="Hand" MouseLeftButtonDown="SelectPVP_Click">
+                                    <StackPanel HorizontalAlignment="Center">
+                                        <TextBlock Text="👥" FontSize="28" HorizontalAlignment="Center" Margin="0,0,0,6"/>
+                                        <TextBlock Text="Player vs Player" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" Foreground="#F8FAFC"/>
+                                        <TextBlock Text="Local 2-Player Duel" FontSize="11" Foreground="#94A3B8" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <Border x:Name="CardAI" Grid.Column="2" Background="#1E293B" BorderBrush="#334155" BorderThickness="1.5" CornerRadius="14" Padding="12" Cursor="Hand" MouseLeftButtonDown="SelectAI_Click">
+                                    <StackPanel HorizontalAlignment="Center">
+                                        <TextBlock Text="🤖" FontSize="28" HorizontalAlignment="Center" Margin="0,0,0,6"/>
+                                        <TextBlock Text="Player vs AI" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" Foreground="#F8FAFC"/>
+                                        <TextBlock Text="Tactical Neural Engine" FontSize="11" Foreground="#94A3B8" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </Border>
+                            </Grid>
+
+                            <!-- AI Difficulty Settings (Collapsible) -->
+                            <StackPanel x:Name="AIDifficultySection" Margin="0,0,0,16" Visibility="Collapsed">
+                                <TextBlock Text="AI DIFFICULTY" FontSize="12" FontWeight="Bold" Foreground="#94A3B8" Margin="0,0,0,8"/>
+                                <UniformGrid Columns="3" Rows="1">
+                                    <Button x:Name="BtnDiffEasy" Content="Novice" Style="{StaticResource ModernButton}" Margin="0,0,4,0" Click="DiffEasy_Click" Tag="0"/>
+                                    <Button x:Name="BtnDiffMed" Content="Adept" Style="{StaticResource ModernButton}" Margin="2,0,2,0" Click="DiffMedium_Click" Tag="1"/>
+                                    <Button x:Name="BtnDiffHard" Content="Master" Style="{StaticResource AccentButton}" Margin="4,0,0,0" Click="DiffHard_Click" Tag="2"/>
+                                </UniformGrid>
+                            </StackPanel>
+
+                            <!-- Board Size Selector -->
+                            <TextBlock Text="GRID DIMENSION" FontSize="12" FontWeight="Bold" Foreground="#94A3B8" Margin="0,0,0,8"/>
+                            <UniformGrid Columns="4" Rows="1" Margin="0,0,0,16">
+                                <Button x:Name="BtnGrid3" Content="3 × 3" Style="{StaticResource AccentButton}" Margin="0,0,4,0" Click="GridSize_Click" Tag="3"/>
+                                <Button x:Name="BtnGrid4" Content="4 × 4" Style="{StaticResource ModernButton}" Margin="2,0,2,0" Click="GridSize_Click" Tag="4"/>
+                                <Button x:Name="BtnGrid5" Content="5 × 5" Style="{StaticResource ModernButton}" Margin="2,0,2,0" Click="GridSize_Click" Tag="5"/>
+                                <Button x:Name="BtnGrid6" Content="6 × 6" Style="{StaticResource ModernButton}" Margin="4,0,0,0" Click="GridSize_Click" Tag="6"/>
+                            </UniformGrid>
+
+                            <!-- Game Mode Selector (Classic vs Timed) -->
+                            <TextBlock Text="GAME RULESET" FontSize="12" FontWeight="Bold" Foreground="#94A3B8" Margin="0,0,0,8"/>
+                            <UniformGrid Columns="2" Rows="1" Margin="0,0,0,20">
+                                <Button x:Name="BtnModeClassic" Content="⏳ Classic Turn" Style="{StaticResource AccentButton}" Margin="0,0,6,0" Click="ModeClassic_Click"/>
+                                <Button x:Name="BtnModeTimed" Content="⚡ Speed Blitz (5s)" Style="{StaticResource ModernButton}" Margin="6,0,0,0" Click="ModeTimed_Click"/>
+                            </UniformGrid>
+
+                            <!-- Launch Button -->
+                            <Button x:Name="BtnLaunchGame" Content="⚡ START MATCH" Height="50" FontSize="16" Style="{StaticResource AccentButton}" Click="LaunchGame_Click"/>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Border>
+            </Grid>
+
+            <!-- ================= SCREEN 2: MODERN GAMEPLAY ================= -->
+            <Grid Grid.Row="1" x:Name="GamePlayScreen" Visibility="Collapsed">
+                <Grid.RowDefinitions>
+                    <!-- Player Status HUD -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- Interactive Board Grid -->
+                    <RowDefinition Height="*"/>
+                    <!-- Bottom Controls HUD -->
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Player Status HUD -->
+                <Border Grid.Row="0" Background="#B40F172A" BorderBrush="#4038BDF8" BorderThickness="1" CornerRadius="16" Padding="14,10" Margin="0,0,0,12">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <!-- Player X -->
+                            <ColumnDefinition Width="*"/>
+                            <!-- VS & Timer Center -->
+                            <ColumnDefinition Width="130"/>
+                            <!-- Player O / AI -->
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Player X Card -->
+                        <Border x:Name="PlayerXCard" Grid.Column="0" Background="#1E293B" BorderBrush="#00F0FF" BorderThickness="2" CornerRadius="12" Padding="8,6">
+                            <StackPanel HorizontalAlignment="Center">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="✖" FontWeight="Black" FontSize="18" Foreground="#00F0FF" Margin="0,0,6,0"/>
+                                    <TextBlock x:Name="PlayerXLabel" Text="PLAYER 1" FontWeight="Bold" FontSize="13" Foreground="#F8FAFC" VerticalAlignment="Center"/>
+                                </StackPanel>
+                                <TextBlock x:Name="PlayerXTimerLabel" Text="0.0s" FontSize="11" Foreground="#94A3B8" HorizontalAlignment="Center" Visibility="Collapsed"/>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Center Status / Countdown -->
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <TextBlock x:Name="TurnStatusText" Text="TURN 1" FontSize="13" FontWeight="Bold" Foreground="#38BDF8" HorizontalAlignment="Center"/>
+                            
+                            <!-- Timed Progress Bar Container -->
+                            <Border x:Name="TimerBarContainer" Width="100" Height="8" Background="#334155" CornerRadius="4" Margin="0,6,0,0" Visibility="Collapsed">
+                                <Rectangle x:Name="TimerProgressBar" Fill="#00F0FF" Height="8" HorizontalAlignment="Left" RadiusX="4" RadiusY="4" Width="100"/>
+                            </Border>
+                            <TextBlock x:Name="TimerSecondsText" Text="5s" FontSize="11" FontWeight="Bold" Foreground="#00F0FF" HorizontalAlignment="Center" Margin="0,2,0,0" Visibility="Collapsed"/>
+                        </StackPanel>
+
+                        <!-- Player O Card -->
+                        <Border x:Name="PlayerOCard" Grid.Column="2" Background="#1E293B" BorderBrush="#334155" BorderThickness="1.5" CornerRadius="12" Padding="8,6">
+                            <StackPanel HorizontalAlignment="Center">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="⭕" FontWeight="Black" FontSize="16" Foreground="#FF007F" Margin="0,0,6,0"/>
+                                    <TextBlock x:Name="PlayerOLabel" Text="PLAYER 2" FontWeight="Bold" FontSize="13" Foreground="#F8FAFC" VerticalAlignment="Center"/>
+                                </StackPanel>
+                                <TextBlock x:Name="PlayerOTimerLabel" Text="0.0s" FontSize="11" Foreground="#94A3B8" HorizontalAlignment="Center" Visibility="Collapsed"/>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                </Border>
+
+                <!-- Board Container with Effects Canvas Overlay -->
+                <Grid Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Border x:Name="BoardCard" Background="#B40F172A" BorderBrush="#4038BDF8" BorderThickness="1.5" CornerRadius="18" Padding="14">
+                        <Border.Effect>
+                            <DropShadowEffect Color="#0284C7" BlurRadius="20" ShadowDepth="0" Opacity="0.2"/>
+                        </Border.Effect>
+                        <UniformGrid x:Name="GameBoardGrid">
+                            <!-- Dynamically populated interactive cells -->
+                        </UniformGrid>
+                    </Border>
+
+                    <!-- Overlay Canvas for Winning Laser Slash & Particle Bursts -->
+                    <Canvas x:Name="EffectsCanvas" IsHitTestVisible="False"/>
+                </Grid>
+
+                <!-- Bottom In-Game Controls -->
+                <Grid Grid.Row="2" Margin="0,12,0,0">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button x:Name="BtnUndo" Content="↩ Undo" Style="{StaticResource ModernButton}" Width="90" Height="40" Margin="0,0,8,0" Click="BtnUndo_Click" ToolTip="Undo last move"/>
+                        <Button x:Name="BtnRestart" Content="🔄 Restart" Style="{StaticResource ModernButton}" Width="100" Height="40" Margin="0,0,8,0" Click="BtnRestart_Click"/>
+                        <Button x:Name="BtnBackToMenu" Content="🏠 Main Menu" Style="{StaticResource ModernButton}" Width="110" Height="40" Click="BtnBackToMenu_Click"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+
+            <!-- ================= MODAL 1: GAME OVER / VICTORY OVERLAY ================= -->
+            <Grid Grid.RowSpan="2" x:Name="GameOverModal" Visibility="Collapsed" Background="#D2050B14">
+                <Border Background="#1E293B" BorderBrush="#00F0FF" BorderThickness="2" CornerRadius="20" Padding="28" Width="380" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Border.Effect>
+                        <DropShadowEffect Color="#00F0FF" BlurRadius="30" ShadowDepth="0" Opacity="0.4"/>
+                    </Border.Effect>
+                    <StackPanel HorizontalAlignment="Center">
+                        <TextBlock x:Name="VictoryIcon" Text="👑" FontSize="46" HorizontalAlignment="Center" Margin="0,0,0,8"/>
+                        <TextBlock x:Name="VictoryTitle" Text="PLAYER 1 WINS!" FontSize="22" FontWeight="Black" HorizontalAlignment="Center" Foreground="#00F0FF" Margin="0,0,0,6"/>
+                        <TextBlock x:Name="VictorySubtitle" Text="Victory by tactical line completion!" FontSize="13" Foreground="#94A3B8" HorizontalAlignment="Center" TextAlignment="Center" Margin="0,0,0,16"/>
+
+                        <!-- Match Recap Box -->
+                        <Border Background="#0F172A" CornerRadius="12" Padding="14,10" Margin="0,0,0,20" Width="300">
+                            <StackPanel>
+                                <Grid Margin="0,2">
+                                    <TextBlock Text="Total Moves:" Foreground="#94A3B8" FontSize="12"/>
+                                    <TextBlock x:Name="RecapMoves" Text="7" FontWeight="Bold" Foreground="#F8FAFC" FontSize="12" HorizontalAlignment="Right"/>
+                                </Grid>
+                                <Grid Margin="0,2">
+                                    <TextBlock Text="Match Duration:" Foreground="#94A3B8" FontSize="12"/>
+                                    <TextBlock x:Name="RecapTime" Text="14.2s" FontWeight="Bold" Foreground="#F8FAFC" FontSize="12" HorizontalAlignment="Right"/>
+                                </Grid>
+                                <Grid Margin="0,2" x:Name="RecapStreakRow">
+                                    <TextBlock Text="Win Streak:" Foreground="#94A3B8" FontSize="12"/>
+                                    <TextBlock x:Name="RecapStreak" Text="3 🔥" FontWeight="Bold" Foreground="#FFD600" FontSize="12" HorizontalAlignment="Right"/>
+                                </Grid>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Action Buttons -->
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Button Content="⚡ Play Again" Style="{StaticResource AccentButton}" Width="140" Height="44" Margin="0,0,10,0" Click="Rematch_Click"/>
+                            <Button Content="Main Menu" Style="{StaticResource ModernButton}" Width="130" Height="44" Click="ModalBackToMenu_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <!-- ================= MODAL 2: STATS & ACHIEVEMENTS MODAL ================= -->
+            <Grid Grid.RowSpan="2" x:Name="StatsModal" Visibility="Collapsed" Background="#D2050B14">
+                <Border Background="#1E293B" BorderBrush="#38BDF8" BorderThickness="2" CornerRadius="20" Padding="28" Width="400" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Border.Effect>
+                        <DropShadowEffect Color="#38BDF8" BlurRadius="25" ShadowDepth="0" Opacity="0.3"/>
+                    </Border.Effect>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,16">
+                            <TextBlock Text="🏆" FontSize="24" Margin="0,0,8,0"/>
+                            <TextBlock Text="PLAYER STATISTICS" FontSize="18" FontWeight="Black" Foreground="#F8FAFC" VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <!-- Stats Grid -->
+                        <UniformGrid Columns="2" Rows="3" Margin="0,0,0,20">
+                            <Border Background="#0F172A" CornerRadius="10" Padding="12,8" Margin="4">
+                                <StackPanel>
+                                    <TextBlock Text="TOTAL GAMES" FontSize="10" FontWeight="Bold" Foreground="#64748B"/>
+                                    <TextBlock x:Name="StatTotalGames" Text="0" FontSize="18" FontWeight="Bold" Foreground="#F8FAFC"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Background="#0F172A" CornerRadius="10" Padding="12,8" Margin="4">
+                                <StackPanel>
+                                    <TextBlock Text="PLAYER X WINS" FontSize="10" FontWeight="Bold" Foreground="#00F0FF"/>
+                                    <TextBlock x:Name="StatWinsX" Text="0" FontSize="18" FontWeight="Bold" Foreground="#00F0FF"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Background="#0F172A" CornerRadius="10" Padding="12,8" Margin="4">
+                                <StackPanel>
+                                    <TextBlock Text="PLAYER O WINS" FontSize="10" FontWeight="Bold" Foreground="#FF007F"/>
+                                    <TextBlock x:Name="StatWinsO" Text="0" FontSize="18" FontWeight="Bold" Foreground="#FF007F"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Background="#0F172A" CornerRadius="10" Padding="12,8" Margin="4">
+                                <StackPanel>
+                                    <TextBlock Text="DRAWS" FontSize="10" FontWeight="Bold" Foreground="#94A3B8"/>
+                                    <TextBlock x:Name="StatDraws" Text="0" FontSize="18" FontWeight="Bold" Foreground="#94A3B8"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Background="#0F172A" CornerRadius="10" Padding="12,8" Margin="4">
+                                <StackPanel>
+                                    <TextBlock Text="BEST STREAK" FontSize="10" FontWeight="Bold" Foreground="#FFD600"/>
+                                    <TextBlock x:Name="StatBestStreak" Text="0" FontSize="18" FontWeight="Bold" Foreground="#FFD600"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Background="#0F172A" CornerRadius="10" Padding="12,8" Margin="4">
+                                <StackPanel>
+                                    <TextBlock Text="FASTEST WIN" FontSize="10" FontWeight="Bold" Foreground="#00E676"/>
+                                    <TextBlock x:Name="StatFastestWin" Text="N/A" FontSize="18" FontWeight="Bold" Foreground="#00E676"/>
+                                </StackPanel>
+                            </Border>
+                        </UniformGrid>
+
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Button Content="Close" Style="{StaticResource AccentButton}" Width="120" Height="40" Margin="0,0,10,0" Click="CloseStats_Click"/>
+                            <Button Content="Reset All" Style="{StaticResource ModernButton}" Width="100" Height="40" Click="ResetStats_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
         </Grid>
     </Grid>
 </Window>
