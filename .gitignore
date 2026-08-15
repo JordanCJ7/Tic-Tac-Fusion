@@ -1,0 +1,30 @@
+﻿## Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+TicTacToe/bin/
+TicTacToe/obj/
+
+## Visual Studio cache/options
+.vs/
+*.user
+*.userosscache
+*.sln.docstates
+*.suo
+
+## Publish Output
+publish/
+*.publishproj
+
+## Dotnet tools
+.dotnet/
