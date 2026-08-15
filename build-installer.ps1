@@ -19,7 +19,7 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 # Step 2: Create portable ZIP distribution
-$zipFileName = "TicTacFusion-v$version-Standalone-win-x64.zip"
+$zipFileName = "TicTacFusion-v$version-Portable-win-x64.zip"
 Write-Host "`n[2/3] Creating portable ZIP archive: $zipFileName..." -ForegroundColor Yellow
 if (!(Test-Path -Path "./dist")) {
     New-Item -ItemType Directory -Path "./dist" | Out-Null
@@ -30,16 +30,31 @@ Write-Host "Portable package created at: ./dist/$zipFileName" -ForegroundColor G
 
 # Step 3: Check for Inno Setup compiler to create setup installer
 Write-Host "`n[3/3] Checking for Inno Setup compiler (ISCC.exe)..." -ForegroundColor Yellow
-$isccPath = "C:\Program Files (x86)\Inno Setup 6\ISCC.exe"
-if (!(Test-Path $isccPath)) {
-    $cmd = Get-Command "ISCC.exe" -ErrorAction SilentlyContinue
-    if ($cmd) {
-        $isccPath = $cmd.Source
+$potentialPaths = @(
+    "C:\Program Files (x86)\Inno Setup 6\ISCC.exe",
+    "C:\Program Files\Inno Setup 6\ISCC.exe",
+    "$env:LOCALAPPDATA\Programs\Inno Setup 6\ISCC.exe",
+    "C:\Users\janit\AppData\Local\Programs\Inno Setup 6\ISCC.exe"
+)
+
+$isccPath = $null
+foreach ($path in $potentialPaths) {
+    if (Test-Path $path) {
+        $isccPath = $path
+        break
     }
 }
 
+if (-not $isccPath) {
+    $cmd = Get-Command "ISCC.exe" -ErrorAction SilentlyContinue
+    if ($cmd) { $isccPath = $cmd.Source }
+}
+
 if ($isccPath -and (Test-Path $isccPath)) {
-    Write-Host "Compiling setup installer with Inno Setup..." -ForegroundColor Cyan
+    Write-Host "Compiling Windows setup installer using: $isccPath..." -ForegroundColor Cyan
+    if (!(Test-Path -Path "./installer-output")) {
+        New-Item -ItemType Directory -Path "./installer-output" | Out-Null
+    }
     & $isccPath installer.iss
     Write-Host "`n[SUCCESS] Windows Installer created in ./installer-output/" -ForegroundColor Green
 } else {
