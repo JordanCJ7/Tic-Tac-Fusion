@@ -37,3 +37,4 @@ C:\Users\janit\OneDrive\Documents\GitHub\Tic-Tac-Toe-Game-PC\TicTacToe\obj\Debug
 C:\Users\janit\OneDrive\Documents\GitHub\Tic-Tac-Toe-Game-PC\TicTacToe\obj\Debug\net9.0-windows\TicTacToe.pdb
 C:\Users\janit\OneDrive\Documents\GitHub\Tic-Tac-Toe-Game-PC\TicTacToe\obj\Debug\net9.0-windows\TicTacToe.genruntimeconfig.cache
 C:\Users\janit\OneDrive\Documents\GitHub\Tic-Tac-Toe-Game-PC\TicTacToe\obj\Debug\net9.0-windows\ref\TicTacToe.dll
+C:\Users\janit\OneDrive\Documents\GitHub\Tic-Tac-Toe-Game-PC\TicTacToe\obj\Debug\net9.0-windows\App.baml

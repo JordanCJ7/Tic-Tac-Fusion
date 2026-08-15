@@ -11,7 +11,7 @@
     "C:\\Users\\janit\\.nuget\\packages\\": {}
   },
   "project": {
-    "version": "1.0.0",
+    "version": "2.0.0",
     "restore": {
       "projectUniqueName": "C:\\Users\\janit\\OneDrive\\Documents\\GitHub\\Tic-Tac-Toe-Game-PC\\TicTacToe\\TicTacToe.csproj",
       "projectName": "TicTacToe",
@@ -68,7 +68,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.313/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

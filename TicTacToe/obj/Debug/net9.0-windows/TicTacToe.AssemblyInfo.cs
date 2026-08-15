@@ -10,13 +10,13 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("TicTacToe")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("Janitha Gamage")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b8951e11df832d1737f7bee9c1677e5f97dbb3f1")]
-[assembly: System.Reflection.AssemblyProductAttribute("TicTacToe")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("2.0.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("2.0.0+fd9b245155f657e37be39d2197ee3aa662c05d19")]
+[assembly: System.Reflection.AssemblyProductAttribute("Tic-Tac-Toe Next-Gen PC Edition")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TicTacToe")]
-[assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
+[assembly: System.Reflection.AssemblyVersionAttribute("2.0.0.0")]
 [assembly: System.Runtime.Versioning.TargetPlatformAttribute("Windows7.0")]
 [assembly: System.Runtime.Versioning.SupportedOSPlatformAttribute("Windows7.0")]
 
