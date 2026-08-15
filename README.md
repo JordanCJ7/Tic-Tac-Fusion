@@ -44,12 +44,12 @@ A high-end, visually stunning desktop implementation of **Tic Tac Fusion** built
 ## 🚀 Installation & Running
 
 ### Option 1: Standalone Portable Package (No .NET Install Needed)
-1. Download the latest `TicTacFusion-v2.0-Standalone-win-x64.zip` from the [Releases](https://github.com/JordanCJ7/Tic-Tac-Fusion/releases) page.
+1. Download the latest `TicTacFusion-v1.0.0-Standalone-win-x64.zip` from the [Releases](https://github.com/JordanCJ7/Tic-Tac-Fusion/releases) page.
 2. Extract the archive.
 3. Run `TicTacFusion.exe` directly on any 64-bit Windows PC.
 
 ### Option 2: Setup Installer (Inno Setup)
-- Compile `installer.iss` with [Inno Setup](https://jrsoftware.org/isinfo.php) or run `.\build-installer.ps1` to produce `TicTacFusion-Setup-v2.0.0.exe`.
+- Compile `installer.iss` with [Inno Setup](https://jrsoftware.org/isinfo.php) or run `.\build-installer.ps1` to produce `TicTacFusion-Setup-v1.0.0.exe`.
 
 ### Option 3: Build & Run from Source
 1. Clone repository:
@@ -100,3 +100,4 @@ Tic-Tac-Fusion/
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
 
 © 2026 | Created with ❤️ by [Janitha Gamage](https://github.com/JordanCJ7)
+

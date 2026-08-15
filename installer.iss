@@ -1,6 +1,6 @@
 ﻿; Inno Setup Script for Tic Tac Fusion PC Edition
 #define MyAppName "Tic Tac Fusion"
-#define MyAppVersion "2.0.0"
+#define MyAppVersion "1.0.0"
 #define MyAppPublisher "Janitha Gamage"
 #define MyAppURL "https://github.com/JordanCJ7/Tic-Tac-Fusion"
 #define MyAppExeName "TicTacFusion.exe"
@@ -40,3 +40,4 @@ Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: de
 
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
+

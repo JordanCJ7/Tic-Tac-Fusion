@@ -10,10 +10,11 @@
     <ApplicationTitle>Tic Tac Fusion</ApplicationTitle>
     <AssemblyName>TicTacFusion</AssemblyName>
     <RootNamespace>TicTacFusion</RootNamespace>
-    <Version>2.0.0</Version>
+    <Version>1.0.0</Version>
     <Authors>Janitha Gamage</Authors>
     <Product>Tic Tac Fusion - Next-Gen PC Edition</Product>
     <Description>A modern, visually stunning Tic Tac Fusion game for PC with advanced AI, customizable themes, and procedural audio.</Description>
   </PropertyGroup>
 
 </Project>
+
