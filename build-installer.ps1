@@ -1,11 +1,11 @@
-﻿# Build and Package Script for Tic-Tac-Toe PC
+﻿# Build and Package Script for Tic Tac Fusion PC
 Write-Host "=============================================" -ForegroundColor Cyan
-Write-Host "  Tic-Tac-Toe PC - Build & Packaging Script  " -ForegroundColor Cyan
+Write-Host "  Tic Tac Fusion PC - Build & Packaging      " -ForegroundColor Cyan
 Write-Host "=============================================" -ForegroundColor Cyan
 
 # Step 1: Publish standalone self-contained release
 Write-Host "`n[1/3] Publishing self-contained win-x64 executable..." -ForegroundColor Yellow
-dotnet publish TicTacToe/TicTacToe.csproj -c Release -r win-x64 --self-contained -p:PublishSingleFile=true -p:PublishReadyToRun=true -o ./publish
+dotnet publish TicTacFusion/TicTacFusion.csproj -c Release -r win-x64 --self-contained -p:PublishSingleFile=true -p:PublishReadyToRun=true -o ./publish
 
 if ($LASTEXITCODE -ne 0) {
     Write-Host "`n[ERROR] Dotnet publish failed." -ForegroundColor Red
@@ -18,8 +18,8 @@ if (!(Test-Path -Path "./dist")) {
     New-Item -ItemType Directory -Path "./dist" | Out-Null
 }
 
-Compress-Archive -Path ./publish/* -DestinationPath ./dist/TicTacToe-v2.0-Standalone-win-x64.zip -Force
-Write-Host "Portable package created at: ./dist/TicTacToe-v2.0-Standalone-win-x64.zip" -ForegroundColor Green
+Compress-Archive -Path ./publish/* -DestinationPath ./dist/TicTacFusion-v2.0-Standalone-win-x64.zip -Force
+Write-Host "Portable package created at: ./dist/TicTacFusion-v2.0-Standalone-win-x64.zip" -ForegroundColor Green
 
 # Step 3: Check for Inno Setup compiler to create setup installer
 Write-Host "`n[3/3] Checking for Inno Setup compiler (ISCC.exe)..." -ForegroundColor Yellow

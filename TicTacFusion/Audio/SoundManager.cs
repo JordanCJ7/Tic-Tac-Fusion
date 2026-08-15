@@ -3,7 +3,7 @@ using System.IO;
 using System.Media;
 using System.Threading.Tasks;
 
-namespace TicTacToe.Audio
+namespace TicTacFusion.Audio
 {
     public class SoundManager
     {
@@ -210,3 +210,4 @@ namespace TicTacToe.Audio
         }
     }
 }
+

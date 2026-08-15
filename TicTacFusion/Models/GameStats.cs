@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text.Json;
 
-namespace TicTacToe.Models
+namespace TicTacFusion.Models
 {
     public class GameStats
     {
@@ -16,7 +16,7 @@ namespace TicTacToe.Models
 
         private static readonly string FilePath = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-            "TicTacToeGamePC",
+            "TicTacFusion",
             "stats.json"
         );
 
@@ -93,3 +93,4 @@ namespace TicTacToe.Models
         }
     }
 }
+

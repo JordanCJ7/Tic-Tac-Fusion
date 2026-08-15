@@ -1,10 +1,10 @@
-{
+﻿{
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"label": "Build and Run TicTacToe",
+			"label": "Build and Run TicTacFusion",
 			"type": "shell",
-			"command": "dotnet run",
+			"command": "dotnet run --project TicTacFusion",
 			"group": "build",
 			"problemMatcher": [
 				"$msCompile"

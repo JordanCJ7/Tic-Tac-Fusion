@@ -6,7 +6,7 @@ using System.Windows.Media;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
-namespace TicTacToe.Effects
+namespace TicTacFusion.Effects
 {
     public class ParticleSystem
     {
@@ -183,3 +183,4 @@ namespace TicTacToe.Effects
         }
     }
 }
+

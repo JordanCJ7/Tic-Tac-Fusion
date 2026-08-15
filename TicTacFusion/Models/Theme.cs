@@ -1,6 +1,6 @@
 ﻿using System.Windows.Media;
 
-namespace TicTacToe.Models
+namespace TicTacFusion.Models
 {
     public class GameTheme
     {
@@ -75,3 +75,4 @@ namespace TicTacToe.Models
         };
     }
 }
+

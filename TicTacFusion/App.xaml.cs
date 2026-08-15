@@ -1,6 +1,6 @@
-using System.Windows;
+﻿using System.Windows;
 
-namespace TicTacToe
+namespace TicTacFusion
 {
     public partial class App : Application
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TicTacToe.AI
+namespace TicTacFusion.AI
 {
     public class GameAI
     {
@@ -317,3 +317,4 @@ namespace TicTacToe.AI
         #endregion
     }
 }
+

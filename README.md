@@ -1,10 +1,10 @@
-﻿# ⚔️ Tic-Tac-Toe: Next-Gen PC Edition
+﻿# ⚔️ Tic Tac Fusion: Next-Gen PC Edition
 
 [![.NET 9.0](https://img.shields.io/badge/.NET-9.0-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/)
 [![Platform Windows](https://img.shields.io/badge/Platform-Windows%20x64-0078D6?style=for-the-badge&logo=windows&logoColor=white)](https://microsoft.com)
-[![License MIT](https://img.shields.io/badge/License-MIT-green.style=for-the-badge)](./LICENSE)
+[![License MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](./LICENSE)
 
-A high-end, visually stunning desktop implementation of Tic-Tac-Toe built with **C# / .NET 9** and **Windows Presentation Foundation (WPF)**. Features high-tech glassmorphism, dynamic theme engine, vector glow animations, particle physics, synthesized sound effects, advanced AI engine, and zero-dependency standalone installation.
+A high-end, visually stunning desktop implementation of **Tic Tac Fusion** built with **C# / .NET 9** and **Windows Presentation Foundation (WPF)**. Features high-tech glassmorphism, dynamic theme engine, vector glow animations, particle physics, synthesized sound effects, advanced AI engine, and zero-dependency standalone installation.
 
 ---
 
@@ -44,26 +44,26 @@ A high-end, visually stunning desktop implementation of Tic-Tac-Toe built with *
 ## 🚀 Installation & Running
 
 ### Option 1: Standalone Portable Package (No .NET Install Needed)
-1. Download the latest `TicTacToe-v2.0-Standalone-win-x64.zip` from the [Releases](https://github.com/JordanCJ7/Tic-Tac-Toe-Game-PC/releases) page.
+1. Download the latest `TicTacFusion-v2.0-Standalone-win-x64.zip` from the [Releases](https://github.com/JordanCJ7/Tic-Tac-Fusion/releases) page.
 2. Extract the archive.
-3. Run `TicTacToe.exe` directly on any 64-bit Windows PC.
+3. Run `TicTacFusion.exe` directly on any 64-bit Windows PC.
 
 ### Option 2: Setup Installer (Inno Setup)
-- Compile `installer.iss` with [Inno Setup](https://jrsoftware.org/isinfo.php) or run `.\build-installer.ps1` to produce `TicTacToe-Setup-v2.0.0.exe`.
+- Compile `installer.iss` with [Inno Setup](https://jrsoftware.org/isinfo.php) or run `.\build-installer.ps1` to produce `TicTacFusion-Setup-v2.0.0.exe`.
 
 ### Option 3: Build & Run from Source
 1. Clone repository:
    ```bash
-   git clone https://github.com/JordanCJ7/Tic-Tac-Toe-Game-PC.git
-   cd Tic-Tac-Toe-Game-PC
+   git clone https://github.com/JordanCJ7/Tic-Tac-Fusion.git
+   cd Tic-Tac-Fusion
    ```
 2. Build solution:
    ```bash
-   dotnet build
+   dotnet build Tic-Tac-Fusion.sln
    ```
 3. Run game:
    ```bash
-   dotnet run --project TicTacToe
+   dotnet run --project TicTacFusion
    ```
 
 ---
@@ -71,8 +71,8 @@ A high-end, visually stunning desktop implementation of Tic-Tac-Toe built with *
 ## 🛠️ Project Structure
 
 ```
-Tic-Tac-Toe-Game-PC/
-├── TicTacToe/
+Tic-Tac-Fusion/
+├── TicTacFusion/
 │   ├── AI/
 │   │   └── GameAI.cs             # Minimax & Heuristic AI Engine
 │   ├── Audio/
@@ -85,7 +85,7 @@ Tic-Tac-Toe-Game-PC/
 │   ├── App.xaml                  # Modern vector styles & button templates
 │   ├── MainWindow.xaml           # Glassmorphism UI layout & modals
 │   ├── MainWindow.xaml.cs        # Main game controller & animation coordinator
-│   └── TicTacToe.csproj          # .NET 9.0 Windows WPF project
+│   └── TicTacFusion.csproj       # .NET 9.0 Windows WPF project
 ├── build-installer.ps1           # Automated 1-click build & packaging script
 ├── installer.iss                 # Inno Setup Windows installer recipe
 ├── Directory.Build.props         # Global build configuration

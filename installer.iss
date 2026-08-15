@@ -1,12 +1,12 @@
-﻿; Inno Setup Script for Tic-Tac-Toe PC Edition
-#define MyAppName "Tic-Tac-Toe Next-Gen PC"
+﻿; Inno Setup Script for Tic Tac Fusion PC Edition
+#define MyAppName "Tic Tac Fusion"
 #define MyAppVersion "2.0.0"
 #define MyAppPublisher "Janitha Gamage"
-#define MyAppURL "https://github.com/JordanCJ7/Tic-Tac-Toe-Game-PC"
-#define MyAppExeName "TicTacToe.exe"
+#define MyAppURL "https://github.com/JordanCJ7/Tic-Tac-Fusion"
+#define MyAppExeName "TicTacFusion.exe"
 
 [Setup]
-AppId={{D37E6B81-54E2-4FA8-8F12-4C690F1C9901}
+AppId={{E5813A29-84C1-4BD3-9D14-2C753B18F922}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 AppPublisher={#MyAppPublisher}
@@ -17,7 +17,7 @@ DefaultDirName={autopf}\{#MyAppName}
 DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
 OutputDir=.\installer-output
-OutputBaseFilename=TicTacToe-Setup-v{#MyAppVersion}
+OutputBaseFilename=TicTacFusion-Setup-v{#MyAppVersion}
 Compression=lzma2/ultra64
 SolidCompression=yes
 WizardStyle=modern

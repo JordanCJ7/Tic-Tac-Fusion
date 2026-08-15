@@ -9,12 +9,12 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Effects;
 using System.Windows.Shapes;
 using System.Windows.Threading;
-using TicTacToe.AI;
-using TicTacToe.Audio;
-using TicTacToe.Effects;
-using TicTacToe.Models;
+using TicTacFusion.AI;
+using TicTacFusion.Audio;
+using TicTacFusion.Effects;
+using TicTacFusion.Models;
 
-namespace TicTacToe
+namespace TicTacFusion
 {
     public partial class MainWindow : Window
     {
@@ -736,3 +736,4 @@ namespace TicTacToe
         #endregion
     }
 }
+
