@@ -114,7 +114,7 @@ namespace TicTacFusion
         private void BtnSound_Click(object sender, RoutedEventArgs e)
         {
             SoundManager.Instance.IsMuted = !SoundManager.Instance.IsMuted;
-            BtnSound.Content = SoundManager.Instance.IsMuted ? "🔇" : "🔊";
+            BtnSound.Content = SoundManager.Instance.IsMuted ? "\U0001F507" : "\U0001F50A";
             if (!SoundManager.Instance.IsMuted) SoundManager.Instance.PlayClick();
         }
 
@@ -125,7 +125,7 @@ namespace TicTacFusion
             StatWinsX.Text = _stats.WinsX.ToString();
             StatWinsO.Text = _stats.WinsO.ToString();
             StatDraws.Text = _stats.Draws.ToString();
-            StatBestStreak.Text = _stats.BestStreak + " 🔥";
+            StatBestStreak.Text = _stats.BestStreak + " \U0001F525";
             StatFastestWin.Text = _stats.FastestWinSeconds > 0 ? $"{_stats.FastestWinSeconds:F1}s" : "N/A";
             StatsModal.Visibility = Visibility.Visible;
         }
@@ -606,7 +606,7 @@ namespace TicTacFusion
             if (isPlayerWinner)
             {
                 SoundManager.Instance.PlayWin();
-                VictoryIcon.Text = "👑";
+                VictoryIcon.Text = "\U0001F451";
                 VictoryTitle.Text = _isAIGame ? "VICTORY ACHIEVED!" : $"PLAYER {winner} WINS!";
                 VictoryTitle.Foreground = new SolidColorBrush(winner == 'X' ? CurrentTheme.PlayerXColor : CurrentTheme.PlayerOColor);
                 VictorySubtitle.Text = $"Spectacular line completion in {_moveCount} moves!";
@@ -614,7 +614,7 @@ namespace TicTacFusion
             else
             {
                 SoundManager.Instance.PlayLose();
-                VictoryIcon.Text = "🤖";
+                VictoryIcon.Text = "\U0001F916";
                 VictoryTitle.Text = "AI DOMINATES!";
                 VictoryTitle.Foreground = new SolidColorBrush(CurrentTheme.PlayerOColor);
                 VictorySubtitle.Text = "The machine found a tactical breakthrough.";
@@ -622,7 +622,7 @@ namespace TicTacFusion
 
             RecapMoves.Text = _moveCount.ToString();
             RecapTime.Text = $"{totalElapsed:F1}s";
-            RecapStreak.Text = _stats.CurrentStreak + " 🔥";
+            RecapStreak.Text = _stats.CurrentStreak + " \U0001F525";
 
             // Spawn celebratory particle explosion
             Point boardCenter = new Point(BoardCard.ActualWidth / 2, BoardCard.ActualHeight / 2);
@@ -645,7 +645,7 @@ namespace TicTacFusion
                 _stats.RecordGame(winner, totalElapsed);
                 SoundManager.Instance.PlayWin();
 
-                VictoryIcon.Text = "⚡";
+                VictoryIcon.Text = "\u26A1";
                 VictoryTitle.Text = $"PLAYER {winner} WINS BY TIME!";
                 VictoryTitle.Foreground = new SolidColorBrush(winner == 'X' ? CurrentTheme.PlayerXColor : CurrentTheme.PlayerOColor);
                 VictorySubtitle.Text = $"Tie broken! X: {_totalTimeX:F1}s vs O: {_totalTimeO:F1}s";
@@ -655,7 +655,7 @@ namespace TicTacFusion
                 _stats.RecordGame(' ', totalElapsed);
                 SoundManager.Instance.PlayDraw();
 
-                VictoryIcon.Text = "🤝";
+                VictoryIcon.Text = "\U0001F91D";
                 VictoryTitle.Text = "TACTICAL STALEMATE";
                 VictoryTitle.Foreground = new SolidColorBrush(Color.FromRgb(148, 163, 184));
                 VictorySubtitle.Text = "Full grid covered with no victor.";
@@ -663,7 +663,7 @@ namespace TicTacFusion
 
             RecapMoves.Text = _moveCount.ToString();
             RecapTime.Text = $"{totalElapsed:F1}s";
-            RecapStreak.Text = _stats.CurrentStreak + " 🔥";
+            RecapStreak.Text = _stats.CurrentStreak + " \U0001F525";
 
             GameOverModal.Visibility = Visibility.Visible;
         }
@@ -736,4 +736,5 @@ namespace TicTacFusion
         #endregion
     }
 }
+
 
