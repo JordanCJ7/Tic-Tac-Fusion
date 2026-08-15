@@ -41,7 +41,7 @@
                                 <GradientStop Color="#FF007F" Offset="1"/>
                             </LinearGradientBrush>
                         </Border.Background>
-                        <TextBlock Text="âš”ï¸" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Text="&#x2694;&#xFE0F;" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
                     <StackPanel>
                         <TextBlock Text="TIC TAC FUSION" FontSize="18" FontWeight="Black">
@@ -58,9 +58,9 @@
 
                 <!-- Top Right Icon Actions -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button x:Name="BtnStats" Style="{StaticResource IconButton}" Content="ðŸ†" ToolTip="Player Stats &amp; Records" Click="BtnStats_Click" Margin="0,0,8,0"/>
-                    <Button x:Name="BtnTheme" Style="{StaticResource IconButton}" Content="ðŸŽ¨" ToolTip="Switch Theme Style" Click="BtnTheme_Click" Margin="0,0,8,0"/>
-                    <Button x:Name="BtnSound" Style="{StaticResource IconButton}" Content="ðŸ”Š" ToolTip="Toggle Sound Effects" Click="BtnSound_Click"/>
+                    <Button x:Name="BtnStats" Style="{StaticResource IconButton}" Content="&#x1F3C6;" ToolTip="Player Stats &amp; Records" Click="BtnStats_Click" Margin="0,0,8,0"/>
+                    <Button x:Name="BtnTheme" Style="{StaticResource IconButton}" Content="&#x1F3A8;" ToolTip="Switch Theme Style" Click="BtnTheme_Click" Margin="0,0,8,0"/>
+                    <Button x:Name="BtnSound" Style="{StaticResource IconButton}" Content="&#x1F50A;" ToolTip="Toggle Sound Effects" Click="BtnSound_Click"/>
                 </StackPanel>
             </Grid>
 
@@ -85,7 +85,7 @@
 
                                 <Border x:Name="CardPVP" Grid.Column="0" Background="#1E293B" BorderBrush="#00F0FF" BorderThickness="2" CornerRadius="14" Padding="12" Cursor="Hand" MouseLeftButtonDown="SelectPVP_Click">
                                     <StackPanel HorizontalAlignment="Center">
-                                        <TextBlock Text="ðŸ‘¥" FontSize="28" HorizontalAlignment="Center" Margin="0,0,0,6"/>
+                                        <TextBlock Text="&#x1F465;" FontSize="28" HorizontalAlignment="Center" Margin="0,0,0,6"/>
                                         <TextBlock Text="Player vs Player" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" Foreground="#F8FAFC"/>
                                         <TextBlock Text="Local 2-Player Duel" FontSize="11" Foreground="#94A3B8" HorizontalAlignment="Center"/>
                                     </StackPanel>
@@ -93,7 +93,7 @@
 
                                 <Border x:Name="CardAI" Grid.Column="2" Background="#1E293B" BorderBrush="#334155" BorderThickness="1.5" CornerRadius="14" Padding="12" Cursor="Hand" MouseLeftButtonDown="SelectAI_Click">
                                     <StackPanel HorizontalAlignment="Center">
-                                        <TextBlock Text="ðŸ¤–" FontSize="28" HorizontalAlignment="Center" Margin="0,0,0,6"/>
+                                        <TextBlock Text="&#x1F916;" FontSize="28" HorizontalAlignment="Center" Margin="0,0,0,6"/>
                                         <TextBlock Text="Player vs AI" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" Foreground="#F8FAFC"/>
                                         <TextBlock Text="Tactical Neural Engine" FontSize="11" Foreground="#94A3B8" HorizontalAlignment="Center"/>
                                     </StackPanel>
@@ -113,21 +113,21 @@
                             <!-- Board Size Selector -->
                             <TextBlock Text="GRID DIMENSION" FontSize="12" FontWeight="Bold" Foreground="#94A3B8" Margin="0,0,0,8"/>
                             <UniformGrid Columns="4" Rows="1" Margin="0,0,0,16">
-                                <Button x:Name="BtnGrid3" Content="3 Ã— 3" Style="{StaticResource AccentButton}" Margin="0,0,4,0" Click="GridSize_Click" Tag="3"/>
-                                <Button x:Name="BtnGrid4" Content="4 Ã— 4" Style="{StaticResource ModernButton}" Margin="2,0,2,0" Click="GridSize_Click" Tag="4"/>
-                                <Button x:Name="BtnGrid5" Content="5 Ã— 5" Style="{StaticResource ModernButton}" Margin="2,0,2,0" Click="GridSize_Click" Tag="5"/>
-                                <Button x:Name="BtnGrid6" Content="6 Ã— 6" Style="{StaticResource ModernButton}" Margin="4,0,0,0" Click="GridSize_Click" Tag="6"/>
+                                <Button x:Name="BtnGrid3" Content="3 x 3" Style="{StaticResource AccentButton}" Margin="0,0,4,0" Click="GridSize_Click" Tag="3"/>
+                                <Button x:Name="BtnGrid4" Content="4 x 4" Style="{StaticResource ModernButton}" Margin="2,0,2,0" Click="GridSize_Click" Tag="4"/>
+                                <Button x:Name="BtnGrid5" Content="5 x 5" Style="{StaticResource ModernButton}" Margin="2,0,2,0" Click="GridSize_Click" Tag="5"/>
+                                <Button x:Name="BtnGrid6" Content="6 x 6" Style="{StaticResource ModernButton}" Margin="4,0,0,0" Click="GridSize_Click" Tag="6"/>
                             </UniformGrid>
 
                             <!-- Game Mode Selector (Classic vs Timed) -->
                             <TextBlock Text="GAME RULESET" FontSize="12" FontWeight="Bold" Foreground="#94A3B8" Margin="0,0,0,8"/>
                             <UniformGrid Columns="2" Rows="1" Margin="0,0,0,20">
-                                <Button x:Name="BtnModeClassic" Content="â³ Classic Turn" Style="{StaticResource AccentButton}" Margin="0,0,6,0" Click="ModeClassic_Click"/>
-                                <Button x:Name="BtnModeTimed" Content="âš¡ Speed Blitz (5s)" Style="{StaticResource ModernButton}" Margin="6,0,0,0" Click="ModeTimed_Click"/>
+                                <Button x:Name="BtnModeClassic" Content="&#x23F3; Classic Turn" Style="{StaticResource AccentButton}" Margin="0,0,6,0" Click="ModeClassic_Click"/>
+                                <Button x:Name="BtnModeTimed" Content="&#x26A1; Speed Blitz (5s)" Style="{StaticResource ModernButton}" Margin="6,0,0,0" Click="ModeTimed_Click"/>
                             </UniformGrid>
 
                             <!-- Launch Button -->
-                            <Button x:Name="BtnLaunchGame" Content="âš¡ START MATCH" Height="50" FontSize="16" Style="{StaticResource AccentButton}" Click="LaunchGame_Click"/>
+                            <Button x:Name="BtnLaunchGame" Content="&#x26A1; START MATCH" Height="50" FontSize="16" Style="{StaticResource AccentButton}" Click="LaunchGame_Click"/>
                         </StackPanel>
                     </ScrollViewer>
                 </Border>
@@ -160,7 +160,7 @@
                         <Border x:Name="PlayerXCard" Grid.Column="0" Background="#1E293B" BorderBrush="#00F0FF" BorderThickness="2" CornerRadius="12" Padding="8,6">
                             <StackPanel HorizontalAlignment="Center">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <TextBlock Text="âœ–" FontWeight="Black" FontSize="18" Foreground="#00F0FF" Margin="0,0,6,0"/>
+                                    <TextBlock Text="X" FontWeight="Black" FontSize="18" Foreground="#00F0FF" Margin="0,0,6,0"/>
                                     <TextBlock x:Name="PlayerXLabel" Text="PLAYER 1" FontWeight="Bold" FontSize="13" Foreground="#F8FAFC" VerticalAlignment="Center"/>
                                 </StackPanel>
                                 <TextBlock x:Name="PlayerXTimerLabel" Text="0.0s" FontSize="11" Foreground="#94A3B8" HorizontalAlignment="Center" Visibility="Collapsed"/>
@@ -182,7 +182,7 @@
                         <Border x:Name="PlayerOCard" Grid.Column="2" Background="#1E293B" BorderBrush="#334155" BorderThickness="1.5" CornerRadius="12" Padding="8,6">
                             <StackPanel HorizontalAlignment="Center">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <TextBlock Text="â­•" FontWeight="Black" FontSize="16" Foreground="#FF007F" Margin="0,0,6,0"/>
+                                    <TextBlock Text="O" FontWeight="Black" FontSize="18" Foreground="#FF007F" Margin="0,0,6,0"/>
                                     <TextBlock x:Name="PlayerOLabel" Text="PLAYER 2" FontWeight="Bold" FontSize="13" Foreground="#F8FAFC" VerticalAlignment="Center"/>
                                 </StackPanel>
                                 <TextBlock x:Name="PlayerOTimerLabel" Text="0.0s" FontSize="11" Foreground="#94A3B8" HorizontalAlignment="Center" Visibility="Collapsed"/>
@@ -209,9 +209,9 @@
                 <!-- Bottom In-Game Controls -->
                 <Grid Grid.Row="2" Margin="0,12,0,0">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Button x:Name="BtnUndo" Content="â†© Undo" Style="{StaticResource ModernButton}" Width="90" Height="40" Margin="0,0,8,0" Click="BtnUndo_Click" ToolTip="Undo last move"/>
-                        <Button x:Name="BtnRestart" Content="ðŸ”„ Restart" Style="{StaticResource ModernButton}" Width="100" Height="40" Margin="0,0,8,0" Click="BtnRestart_Click"/>
-                        <Button x:Name="BtnBackToMenu" Content="ðŸ  Main Menu" Style="{StaticResource ModernButton}" Width="110" Height="40" Click="BtnBackToMenu_Click"/>
+                        <Button x:Name="BtnUndo" Content="&#x21A9; Undo" Style="{StaticResource ModernButton}" Width="90" Height="40" Margin="0,0,8,0" Click="BtnUndo_Click" ToolTip="Undo last move"/>
+                        <Button x:Name="BtnRestart" Content="&#x21BB; Restart" Style="{StaticResource ModernButton}" Width="100" Height="40" Margin="0,0,8,0" Click="BtnRestart_Click"/>
+                        <Button x:Name="BtnBackToMenu" Content="&#x1F3E0; Menu" Style="{StaticResource ModernButton}" Width="100" Height="40" Click="BtnBackToMenu_Click"/>
                     </StackPanel>
                 </Grid>
             </Grid>
@@ -223,7 +223,7 @@
                         <DropShadowEffect Color="#00F0FF" BlurRadius="30" ShadowDepth="0" Opacity="0.4"/>
                     </Border.Effect>
                     <StackPanel HorizontalAlignment="Center">
-                        <TextBlock x:Name="VictoryIcon" Text="ðŸ‘‘" FontSize="46" HorizontalAlignment="Center" Margin="0,0,0,8"/>
+                        <TextBlock x:Name="VictoryIcon" Text="&#x1F451;" FontSize="46" HorizontalAlignment="Center" Margin="0,0,0,8"/>
                         <TextBlock x:Name="VictoryTitle" Text="PLAYER 1 WINS!" FontSize="22" FontWeight="Black" HorizontalAlignment="Center" Foreground="#00F0FF" Margin="0,0,0,6"/>
                         <TextBlock x:Name="VictorySubtitle" Text="Victory by tactical line completion!" FontSize="13" Foreground="#94A3B8" HorizontalAlignment="Center" TextAlignment="Center" Margin="0,0,0,16"/>
 
@@ -240,14 +240,14 @@
                                 </Grid>
                                 <Grid Margin="0,2" x:Name="RecapStreakRow">
                                     <TextBlock Text="Win Streak:" Foreground="#94A3B8" FontSize="12"/>
-                                    <TextBlock x:Name="RecapStreak" Text="3 ðŸ”¥" FontWeight="Bold" Foreground="#FFD600" FontSize="12" HorizontalAlignment="Right"/>
+                                    <TextBlock x:Name="RecapStreak" Text="3 &#x1F525;" FontWeight="Bold" Foreground="#FFD600" FontSize="12" HorizontalAlignment="Right"/>
                                 </Grid>
                             </StackPanel>
                         </Border>
 
                         <!-- Action Buttons -->
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <Button Content="âš¡ Play Again" Style="{StaticResource AccentButton}" Width="140" Height="44" Margin="0,0,10,0" Click="Rematch_Click"/>
+                            <Button Content="&#x26A1; Play Again" Style="{StaticResource AccentButton}" Width="140" Height="44" Margin="0,0,10,0" Click="Rematch_Click"/>
                             <Button Content="Main Menu" Style="{StaticResource ModernButton}" Width="130" Height="44" Click="ModalBackToMenu_Click"/>
                         </StackPanel>
                     </StackPanel>
@@ -262,7 +262,7 @@
                     </Border.Effect>
                     <StackPanel>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,16">
-                            <TextBlock Text="ðŸ†" FontSize="24" Margin="0,0,8,0"/>
+                            <TextBlock Text="&#x1F3C6;" FontSize="24" Margin="0,0,8,0"/>
                             <TextBlock Text="PLAYER STATISTICS" FontSize="18" FontWeight="Black" Foreground="#F8FAFC" VerticalAlignment="Center"/>
                         </StackPanel>
 
@@ -317,4 +317,3 @@
         </Grid>
     </Grid>
 </Window>
-
