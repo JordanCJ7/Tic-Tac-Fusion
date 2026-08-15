@@ -3,6 +3,12 @@ Write-Host "=============================================" -ForegroundColor Cyan
 Write-Host "  Tic Tac Fusion PC - Build & Packaging      " -ForegroundColor Cyan
 Write-Host "=============================================" -ForegroundColor Cyan
 
+# Step 0: Read version dynamically from TicTacFusion.csproj
+$csprojContent = [xml](Get-Content -Path "TicTacFusion/TicTacFusion.csproj")
+$version = $csprojContent.Project.PropertyGroup.Version
+if (-not $version) { $version = "1.0.0" }
+Write-Host "Target Release Version: v$version" -ForegroundColor Green
+
 # Step 1: Publish standalone self-contained release
 Write-Host "`n[1/3] Publishing self-contained win-x64 executable..." -ForegroundColor Yellow
 dotnet publish TicTacFusion/TicTacFusion.csproj -c Release -r win-x64 --self-contained -p:PublishSingleFile=true -p:PublishReadyToRun=true -o ./publish
@@ -13,13 +19,14 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 # Step 2: Create portable ZIP distribution
-Write-Host "`n[2/3] Creating portable ZIP archive..." -ForegroundColor Yellow
+$zipFileName = "TicTacFusion-v$version-Standalone-win-x64.zip"
+Write-Host "`n[2/3] Creating portable ZIP archive: $zipFileName..." -ForegroundColor Yellow
 if (!(Test-Path -Path "./dist")) {
     New-Item -ItemType Directory -Path "./dist" | Out-Null
 }
 
-Compress-Archive -Path ./publish/* -DestinationPath ./dist/TicTacFusion-v1.0.0-Standalone-win-x64.zip -Force
-Write-Host "Portable package created at: ./dist/TicTacFusion-v1.0.0-Standalone-win-x64.zip" -ForegroundColor Green
+Compress-Archive -Path ./publish/* -DestinationPath "./dist/$zipFileName" -Force
+Write-Host "Portable package created at: ./dist/$zipFileName" -ForegroundColor Green
 
 # Step 3: Check for Inno Setup compiler to create setup installer
 Write-Host "`n[3/3] Checking for Inno Setup compiler (ISCC.exe)..." -ForegroundColor Yellow
@@ -42,4 +49,3 @@ if ($isccPath -and (Test-Path $isccPath)) {
 Write-Host "`n=============================================" -ForegroundColor Green
 Write-Host "  Build & Packaging Complete!                " -ForegroundColor Green
 Write-Host "=============================================" -ForegroundColor Green
-
