@@ -3,8 +3,9 @@
 [![.NET 9.0](https://img.shields.io/badge/.NET-9.0-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/)
 [![Platform Windows](https://img.shields.io/badge/Platform-Windows%20x64-0078D6?style=for-the-badge&logo=windows&logoColor=white)](https://microsoft.com)
 [![License MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](./LICENSE)
+[![Build & Release](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/JordanCJ7/Tic-Tac-Fusion/actions)
 
-A high-end, visually stunning desktop implementation of **Tic Tac Fusion** built with **C# / .NET 9** and **Windows Presentation Foundation (WPF)**. Features high-tech glassmorphism, dynamic theme engine, vector glow animations, particle physics, synthesized sound effects, advanced AI engine, and zero-dependency standalone installation.
+A high-end, visually stunning desktop implementation of **Tic Tac Fusion** built with **C# / .NET 9** and **Windows Presentation Foundation (WPF)**. Features high-tech glassmorphism, dynamic theme engine, vector glow animations, particle physics, synthesized sound effects, advanced AI engine, single-click Windows setup installer, and zero-dependency standalone portable distribution.
 
 ---
 
@@ -43,15 +44,17 @@ A high-end, visually stunning desktop implementation of **Tic Tac Fusion** built
 
 ## 🚀 Installation & Running
 
-### Option 1: Standalone Portable Package (No .NET Install Needed)
-1. Download the latest `TicTacFusion-v1.0.0-Standalone-win-x64.zip` from the [Releases](https://github.com/JordanCJ7/Tic-Tac-Fusion/releases) page.
-2. Extract the archive.
-3. Run `TicTacFusion.exe` directly on any 64-bit Windows PC.
+### Option 1: Windows Setup Installer (Recommended for Players)
+1. Download **`TicTacFusion-Setup-v1.0.0.exe`** from the [GitHub Releases](https://github.com/JordanCJ7/Tic-Tac-Fusion/releases) page.
+2. Run the installer setup wizard.
+3. Installs to `Program Files`, adds Desktop and Start Menu shortcuts, and registers in Windows Settings with a full uninstaller.
 
-### Option 2: Setup Installer (Inno Setup)
-- Compile `installer.iss` with [Inno Setup](https://jrsoftware.org/isinfo.php) or run `.\build-installer.ps1` to produce `TicTacFusion-Setup-v1.0.0.exe`.
+### Option 2: Standalone Portable ZIP (Zero Install)
+1. Download **`TicTacFusion-v1.0.0-Portable-win-x64.zip`** from the [GitHub Releases](https://github.com/JordanCJ7/Tic-Tac-Fusion/releases) page.
+2. Extract the archive anywhere on your PC.
+3. Double-click `TicTacFusion.exe` to play immediately on any 64-bit Windows PC without installing .NET.
 
-### Option 3: Build & Run from Source
+### Option 3: Build & Run from Source (Developers)
 1. Clone repository:
    ```bash
    git clone https://github.com/JordanCJ7/Tic-Tac-Fusion.git
@@ -68,17 +71,38 @@ A high-end, visually stunning desktop implementation of **Tic Tac Fusion** built
 
 ---
 
+## 📦 Local Packaging & Installer Creation
+
+To compile the self-contained single-file binary, build the portable ZIP package, and generate the Windows Setup Installer (`.exe`) on your computer, run:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\build-installer.ps1
+```
+
+This generates:
+- 📁 **Portable Archive**: `dist/TicTacFusion-v1.0.0-Portable-win-x64.zip`
+- 💿 **Windows Setup Installer**: `installer-output/TicTacFusion-Setup-v1.0.0.exe`
+
+---
+
 ## 🛠️ Project Structure
 
 ```
 Tic-Tac-Fusion/
+├── .github/
+│   ├── ISSUE_TEMPLATE/
+│   │   ├── bug_report.md         # Windows PC-specific bug report form
+│   │   └── feature_request.md    # Feature suggestion template
+│   ├── workflows/
+│   │   └── build.yml             # Automated CI/CD, testing & release packaging
+│   └── pull_request_template.md  # Contributor PR checklist
 ├── TicTacFusion/
 │   ├── AI/
-│   │   └── GameAI.cs             # Minimax & Heuristic AI Engine
+│   │   └── GameAI.cs             # Minimax & Directional Heuristic AI Engine
 │   ├── Audio/
-│   │   └── SoundManager.cs       # Procedural 44.1kHz audio generator & player
+│   │   └── SoundManager.cs       # Procedural 44.1kHz audio synthesizer & player
 │   ├── Effects/
-│   │   └── ParticleSystem.cs     # 60 FPS Particle Canvas & visual explosions
+│   │   └── ParticleSystem.cs     # 60 FPS Particle Canvas & victory fireworks
 │   ├── Models/
 │   │   ├── GameStats.cs          # Local persistent stats & records tracker
 │   │   └── Theme.cs              # Multi-palette color & glow themes
@@ -90,9 +114,20 @@ Tic-Tac-Fusion/
 ├── installer.iss                 # Inno Setup Windows installer recipe
 ├── Directory.Build.props         # Global build configuration
 ├── .gitignore                    # Clean .NET repository ignore rules
+├── CODE_OF_CONDUCT.md           # Contributor Covenant Code of Conduct v2.1
+├── CONTRIBUTING.md               # Contribution guidelines & architecture guide
+├── SECURITY.md                  # Vulnerability reporting policy & SLA
 ├── LICENSE                       # MIT License
 └── README.md                     # Documentation
 ```
+
+---
+
+## 🤝 Contributing & Community
+We welcome contributions! Please check out our:
+- [Contributing Guidelines](./CONTRIBUTING.md)
+- [Code of Conduct](./CODE_OF_CONDUCT.md)
+- [Security Policy](./SECURITY.md)
 
 ---
 
@@ -100,4 +135,3 @@ Tic-Tac-Fusion/
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
 
 © 2026 | Created with ❤️ by [Janitha Gamage](https://github.com/JordanCJ7)
-
